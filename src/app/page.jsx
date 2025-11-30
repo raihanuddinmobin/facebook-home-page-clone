@@ -2,7 +2,9 @@ import GroupChat from "@/components/home/GroupChat";
 import LeftGroup from "@/components/home/LeftGroup";
 import LeftMenu from "@/components/home/LeftMenu";
 import NewUpload from "@/components/home/NewUpload";
+import PeopleYouMightKnow from "@/components/home/PeopleYouMightKnow";
 import RightMenu from "@/components/home/RightMenu";
+import UsersStory from "@/components/home/UsersStory";
 
 export default function HomePage() {
   return (
@@ -14,11 +16,12 @@ export default function HomePage() {
           <LeftGroup />
         </div>
 
-        <div className="flex-1 h-full overflow-auto 3xl:px-34">
+        <div className="flex-1 h-full overflow-auto 3xl:px-52">
           <div className="p-4">
             <NewUpload />
-            <p>Long content here to test scroll...</p>
-            <p className="mt-10">More content...</p>
+            <UsersStory />
+
+            <PeopleYouMightKnow />
           </div>
         </div>
 
