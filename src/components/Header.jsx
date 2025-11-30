@@ -78,9 +78,9 @@ export default function Header() {
         </Link>
 
         <div className="relative">
-          <div class="absolute inset-y-0 start-0 flex items-center justify-center  pointer-events-none bg-light-gray md:bg-transparent rounded-full p-3">
+          <div className="absolute inset-y-0 start-0 flex items-center justify-center  pointer-events-none bg-light-gray md:bg-transparent rounded-full p-3">
             <svg
-              class="w-4 h-4 text-body"
+              className="w-4 h-4 text-body"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -90,8 +90,8 @@ export default function Header() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
                 d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
               />
             </svg>
