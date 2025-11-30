@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
   // }
 
   return {
-    title: `Groups | ${slug?.[0].toUpperCase()}`,
+    title: `Groups | ${slug.toUpperCase()}`,
   };
 }
 

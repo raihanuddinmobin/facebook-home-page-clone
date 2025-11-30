@@ -1,4 +1,4 @@
-import BirthdayList from "@/components/home/BirthdayList";
+import GroupChat from "@/components/home/GroupChat";
 import LeftGroup from "@/components/home/LeftGroup";
 import LeftMenu from "@/components/home/LeftMenu";
 import RightMenu from "@/components/home/RightMenu";
@@ -34,9 +34,9 @@ export default function HomePage() {
               direction: "ltr",
             }}
           >
-            <BirthdayList />
-            <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-light-gray" />
             <RightMenu />
+            <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-light-gray" />
+            <GroupChat />
           </div>
         </div>
       </div>

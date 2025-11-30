@@ -24,7 +24,7 @@ export default async function SingleGroup({ params }) {
 
   return (
     <div className="h-[calc(100vh-200px)] flex justify-center items-center capitalize  gap-2">
-      <span>You Are At</span> <strong> {slug} </strong> Page
+      <span>You Are At</span> <strong> {slug.join(" > ")} </strong> Page
     </div>
   );
 }
