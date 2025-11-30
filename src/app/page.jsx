@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import LeftGroup from "@/components/home/LeftGroup";
 import LeftMenu from "@/components/home/LeftMenu";
 import RightMenu from "@/components/home/RightMenu";
@@ -6,7 +5,6 @@ import RightMenu from "@/components/home/RightMenu";
 export default function HomePage() {
   return (
     <main>
-      <Header />
       <div className="grid grid-cols-[300px_1fr_350px] px-4 py-2 gap-4">
         <div className="h-screen overflow-auto">
           <LeftMenu />
