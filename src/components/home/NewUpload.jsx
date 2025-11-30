@@ -14,7 +14,7 @@ export default function NewUpload() {
       />
 
       <input
-        className="bg-light-gray-50 rounded-full px-7 pl-8 h-full hidden md:inline-block py-3 flex-1"
+        className="bg-light-gray-50 rounded-full px-7 pl-8 h-full  py-3 flex-1"
         type="string"
         placeholder="Whats One your Mind, Raihan?"
       />
