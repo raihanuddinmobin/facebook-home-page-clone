@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Container from "./UI/Container";
 
 const menus = [
   {
@@ -66,7 +65,7 @@ const quickMenu = [
 
 export default function Header() {
   return (
-    <Container className=" flex justify-between items-center  px-4 py-2 bg-gray border-gray-200/40 border-b sticky top-0">
+    <section className=" flex justify-between items-center  px-4 py-2 bg-gray border-gray-200/40 border-b sticky top-0">
       <div className="flex gap-3">
         <Link href={"/"}>
           <Image
@@ -115,6 +114,7 @@ export default function Header() {
               <Link
                 href={m.route}
                 key={m.route}
+                title={m.title}
                 className={`hover:bg-light-gray py-3 px-8 xl:px-12 rounded-md relative`}
               >
                 {isHomeActive && (
@@ -131,18 +131,31 @@ export default function Header() {
       </nav>
 
       <nav>
-        <ul className="flex gap-4">
-          {quickMenu.map((m) => (
-            <Link
-              href={m.route}
-              key={m.route}
-              className="bg-light-gray p-3 rounded-full"
-            >
-              <m.icon size={22} />
-            </Link>
-          ))}
+        <ul className="flex gap-4 items-center">
+          {quickMenu.map((m) =>
+            m.title === "Profile" ? (
+              <Image
+                key={m.route}
+                src={"/profile.png"}
+                className="rounded-full static cursor-pointer"
+                objectFit="contain"
+                alt="Profile Image"
+                height={40}
+                width={40}
+              />
+            ) : (
+              <Link
+                href={m.route}
+                key={m.route}
+                className="bg-light-gray p-3 rounded-full"
+                title={m.title}
+              >
+                <m.icon size={22} />
+              </Link>
+            )
+          )}
         </ul>
       </nav>
-    </Container>
+    </section>
   );
 }
