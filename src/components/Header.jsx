@@ -136,8 +136,10 @@ export default function Header() {
 
       <nav>
         <ul className="flex gap-4 items-center">
-          {quickMenu.map((m) =>
-            m.title === "Profile" ? (
+          {quickMenu.map((m) => {
+            const isActive = pathName.startsWith(m.route);
+
+            return m.title === "Profile" ? (
               <Image
                 key={m.route}
                 src={"/profile.png"}
@@ -154,10 +156,13 @@ export default function Header() {
                 className="bg-light-gray p-3 rounded-full"
                 title={m.title}
               >
-                <m.icon size={22} />
+                <m.icon
+                  size={22}
+                  className={`${isActive ? "text-primary" : ""}`}
+                />
               </Link>
-            )
-          )}
+            );
+          })}
         </ul>
       </nav>
     </section>
