@@ -1,3 +1,4 @@
+"use client";
 import {
   Bell,
   Home,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const menus = [
   {
@@ -64,6 +66,8 @@ const quickMenu = [
 ];
 
 export default function Header() {
+  const pathName = usePathname();
+
   return (
     <section className=" flex justify-between items-center  px-4 py-2 bg-gray border-gray-200/40 border-b sticky top-0">
       <div className="flex gap-3">
@@ -106,9 +110,9 @@ export default function Header() {
 
       <nav className="hidden lg:block">
         <ul className="flex">
-          {/* For simplicity Im not Going to checking the slug of it and render dynamically. just keeping it simple by selecting home active  */}
           {menus.map((m) => {
-            const isHomeActive = m.route === "/";
+            const isActive =
+              m.route === "/" ? pathName === "/" : pathName.startsWith(m.route);
 
             return (
               <Link
@@ -117,12 +121,12 @@ export default function Header() {
                 title={m.title}
                 className={`hover:bg-light-gray py-3 px-8 xl:px-12 rounded-md relative`}
               >
-                {isHomeActive && (
+                {isActive && (
                   <span className="block absolute  border-b-3 border-primary w-full -bottom-2 left-0" />
                 )}
                 <m.icon
                   size={30}
-                  className={`${isHomeActive ? "text-primary" : ""}`}
+                  className={`${isActive ? "text-primary" : ""}`}
                 />
               </Link>
             );
