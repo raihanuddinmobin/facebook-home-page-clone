@@ -12,6 +12,7 @@
   --color-gray: #262728;
   --color-light-gray: #333334;
   --color-light-gray-50: #383839;
+  --color-light-gray-25: #333334;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
