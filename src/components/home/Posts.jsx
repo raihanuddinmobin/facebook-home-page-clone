@@ -1,7 +1,14 @@
-import { faShareSquare } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Frown, Heart, MessageCircle, Smile, ThumbsUp } from "lucide-react";
+"use client";
+import {
+  Frown,
+  Heart,
+  MessageCircle,
+  Share2,
+  Smile,
+  ThumbsUp,
+} from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 const posts = [
   {
@@ -15,6 +22,18 @@ const posts = [
     ],
     caption: "Enjoying a sunny day at the park!",
     likes: 120,
+    shares: [
+      {
+        user: "Daniel Smith",
+        userImage: "https://picsum.photos/seed/s1/40/40",
+        time: "3h",
+      },
+      {
+        user: "Emily Davis",
+        userImage: "https://picsum.photos/seed/s2/40/40",
+        time: "1h",
+      },
+    ],
     comments: [
       {
         user: "John Doe",
@@ -44,6 +63,13 @@ const posts = [
     images: ["https://picsum.photos/seed/p4/800/600"],
     caption: "Just finished my morning run. Feeling great!",
     likes: 89,
+    shares: [
+      {
+        user: "Oliver Turner",
+        userImage: "https://picsum.photos/seed/s3/40/40",
+        time: "4h",
+      },
+    ],
     comments: [
       {
         user: "Emma Wilson",
@@ -70,6 +96,23 @@ const posts = [
     ],
     caption: "Homemade pizza night",
     likes: 150,
+    shares: [
+      {
+        user: "Isabella Foster",
+        userImage: "https://picsum.photos/seed/s4/40/40",
+        time: "2h",
+      },
+      {
+        user: "Ethan Harris",
+        userImage: "https://picsum.photos/seed/s5/40/40",
+        time: "1h",
+      },
+      {
+        user: "Aidan Ross",
+        userImage: "https://picsum.photos/seed/s6/40/40",
+        time: "50m",
+      },
+    ],
     comments: [
       {
         user: "Nina Zhao",
@@ -105,6 +148,18 @@ const posts = [
     ],
     caption: "Exploring the mountains this weekend",
     likes: 210,
+    shares: [
+      {
+        user: "Jacob Evans",
+        userImage: "https://picsum.photos/seed/s7/40/40",
+        time: "6h",
+      },
+      {
+        user: "Victoria Nguyen",
+        userImage: "https://picsum.photos/seed/s8/40/40",
+        time: "5h",
+      },
+    ],
     comments: [
       {
         user: "Olivia Brown",
@@ -128,6 +183,23 @@ const posts = [
     images: ["https://picsum.photos/seed/p12/800/600"],
     caption: "Coffee + Book = Perfect Sunday",
     likes: 98,
+    shares: [
+      {
+        user: "Henry Clark",
+        userImage: "https://picsum.photos/seed/s9/40/40",
+        time: "3h",
+      },
+      {
+        user: "Ariana Gomez",
+        userImage: "https://picsum.photos/seed/s10/40/40",
+        time: "2h",
+      },
+      {
+        user: "Chris Johnson",
+        userImage: "https://picsum.photos/seed/s11/40/40",
+        time: "1h",
+      },
+    ],
     comments: [
       {
         user: "Liam Scott",
@@ -162,6 +234,28 @@ const posts = [
     ],
     caption: "Throwback to my trip to Italy",
     likes: 320,
+    shares: [
+      {
+        user: "Evan Brooks",
+        userImage: "https://picsum.photos/seed/s12/40/40",
+        time: "9h",
+      },
+      {
+        user: "Samantha Carter",
+        userImage: "https://picsum.photos/seed/s13/40/40",
+        time: "8h",
+      },
+      {
+        user: "Anthony Cruz",
+        userImage: "https://picsum.photos/seed/s14/40/40",
+        time: "7h",
+      },
+      {
+        user: "Olivia Brown",
+        userImage: "https://picsum.photos/seed/s15/40/40",
+        time: "5h",
+      },
+    ],
     comments: [
       {
         user: "Mia Chen",
@@ -200,6 +294,7 @@ const icons = [
 ];
 
 export default function Posts() {
+  const [liked, setLiked] = useState(null);
   const getGridLayout = (count) => {
     if (count === 1) return "grid-cols-1";
     if (count === 2) return "grid-cols-2";
@@ -212,6 +307,10 @@ export default function Posts() {
     if (count === 3 && index === 0) return "row-span-2";
     return "h-48";
   };
+
+  function handleLiked(li) {
+    setLiked(li);
+  }
 
   return (
     <div className="mx-auto mt-2 space-y-6 ">
@@ -279,28 +378,68 @@ export default function Posts() {
               </div>
             </div>
 
-            <div className="p-4 space-y-2">
-              <div className="flex justify-between items-center">
-                <p className="text-gray-500 text-sm">{post.likes} likes</p>
-                <p className="text-gray-500 text-sm">
+            <div className=" space-y-2">
+              <div className="flex justify-between items-center gap-5 p-4 pb-0">
+                <p className="text-slate-200 text-sm font-medium flex gap-1 items-center">
+                  <div className="flex -space-x-1">
+                    <span className="w-6 h-6 flex items-center justify-center text-[13px] bg-blue-600 text-white rounded-full shadow">
+                      👍
+                    </span>
+                    <span className="w-6 h-6 flex items-center justify-center text-[13px] bg-red-500 text-white rounded-full shadow">
+                      ❤️
+                    </span>
+                    <span className="w-6 h-6 flex items-center justify-center text-[13px] bg-yellow-400 text-white rounded-full shadow">
+                      😢
+                    </span>
+                  </div>
+                  {liked && liked.postId === post.id
+                    ? post.likes + 1
+                    : post.likes}{" "}
+                  likes
+                </p>
+                <p className="text-slate-200 text-sm ml-auto font-medium">
                   {post.comments.length} Comments
                 </p>
+                <p className="text-slate-200 text-sm font-medium">
+                  {post.shares.length} Shares
+                </p>
               </div>
-              <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-slate-500" />
+              <hr className="my-4 h-[0.2px] border-t-0 bg-neutral-100 dark:bg-white/20" />
 
-              <div className="flex space-x-4 relative  justify-between">
-                <div className="group relative">
-                  <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
-                    <ThumbsUp
-                      size={28}
-                      className=" text-gray-400 hover:text-blue-500"
-                    />
-                    <span className="pt-2 hidden md:block">Likes</span>
+              <div className="flex space-x-4 relative items-center  justify-between p-4 pt-0">
+                <div className="group relative flex flex-1 justify-center">
+                  <div
+                    className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 rounded-md transition-all duration-100 h-8 "
+                    onClick={() => setLiked("")}
+                  >
+                    {liked && liked.postId === post.id ? (
+                      <>
+                        <liked.icon
+                          size={24}
+                          className=" text-slate-200   hover:text-blue-500"
+                        />
+                        <span className="hidden md:block font-semibold tracking-wide pt-1">
+                          {liked.name}
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <ThumbsUp
+                          size={24}
+                          className=" text-slate-200   hover:text-blue-500"
+                        />
+                        <span className="hidden md:block font-semibold tracking-wide pt-1">
+                          {" "}
+                          Likes{" "}
+                        </span>
+                      </>
+                    )}
                   </div>
 
-                  <div className="absolute -top-14 left-18  -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray rounded-full p-2">
+                  <div className="absolute -top-14 left-18  -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray rounded-full p-2 ">
                     {icons.map((ic) => (
                       <button
+                        onClick={() => handleLiked({ ...ic, postId: post.id })}
                         key={ic.name}
                         className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs  hover:scale-[1.3] transition-all duration-150"
                       >
@@ -310,22 +449,23 @@ export default function Posts() {
                   </div>
                 </div>
 
-                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
+                <div className="cursor-pointer flex items-center-safe gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100 flex-1 justify-center">
                   <MessageCircle
-                    size={28}
-                    className="cursor-pointer text-gray-400 hover:text-blue-500"
+                    size={24}
+                    className="cursor-pointer  text-slate-200  hover:text-blue-500"
                   />
-                  <span className="pt-2 hidden md:block">Comments</span>
+                  <span className="hidden md:block font-semibold tracking-wide pt-1">
+                    Comments
+                  </span>
                 </div>
 
-                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
-                  <FontAwesomeIcon
-                    icon={faShareSquare}
-                    className="text-slate-200/80"
-                    style={{ fontSize: "22px" }}
+                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100 flex-1 justify-center">
+                  <Share2
+                    size={24}
+                    className="cursor-pointer text-slate-200 hover:text-blue-500"
                   />
 
-                  <span className="pt-2 hidden md:block">Share</span>
+                  <span className="text-slate-200 hidden md:block">Share</span>
                 </div>
               </div>
             </div>

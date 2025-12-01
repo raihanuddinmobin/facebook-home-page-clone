@@ -172,7 +172,7 @@ export default function Header() {
                 "/notifications":
                   "left-[-250px] sm:left-[-310px]  md:left-[-520px] lg:left-[-530px]",
                 "/messages":
-                  "left-[-210px] sm:left-[-250px]  md:left-[-520px] lg:left-[-460px]",
+                  "left-[-170px] sm:left-[-250px]  md:left-[-520px] lg:left-[-460px]",
               };
 
               return (
