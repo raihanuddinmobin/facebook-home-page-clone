@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <main>
       <div className="flex h-screen">
-        <div className="w-64 lg:w-80 xl:w-96 h-full overflow-hidden hover:overflow-auto p-2 hidden xl:block cursor-default hover:cursor-pointer fixed">
+        <div className="w-64 lg:w-80 xl:w-96 h-full overflow-hidden hover:overflow-auto p-2 hidden xl:block cursor-default hover:cursor-pointer fixed leftbar scroll-smooth">
           <LeftMenu />
           <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-light-gray" />
           <LeftGroup />

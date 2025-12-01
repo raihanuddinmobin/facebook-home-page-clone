@@ -1,11 +1,6 @@
-import {
-  Frown,
-  Heart,
-  MessageCircleDashed,
-  Share,
-  Smile,
-  ThumbsUp,
-} from "lucide-react";
+import { faShareSquare } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Frown, Heart, MessageCircle, Smile, ThumbsUp } from "lucide-react";
 import Image from "next/image";
 
 const posts = [
@@ -126,6 +121,25 @@ const posts = [
   },
 ];
 
+const icons = [
+  {
+    name: "Like",
+    icon: ThumbsUp,
+  },
+  {
+    name: "Love",
+    icon: Heart,
+  },
+  {
+    name: "Haha",
+    icon: Smile,
+  },
+  {
+    name: "Sad",
+    icon: Frown,
+  },
+];
+
 export default function Posts() {
   return (
     <div className="mx-auto mt-2  space-y-6">
@@ -172,36 +186,48 @@ export default function Posts() {
             <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-slate-500" />
 
             <div className="flex space-x-4 relative  justify-between">
-              <div className="group relative ">
-                <ThumbsUp
-                  size={28}
-                  className="cursor-pointer text-gray-400 hover:text-blue-500"
-                />
+              <div className="group relative">
+                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
+                  <ThumbsUp
+                    size={28}
+                    className=" text-gray-400 hover:text-blue-500"
+                  />
+                  <span className="pt-2">Likes</span>
+                </div>
 
                 <div className="absolute -top-14 left-18  -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray rounded-full p-2">
-                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs ">
-                    <ThumbsUp className="cursor-pointer" />
-                  </button>
-                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs">
-                    <Heart className="cursor-pointer" />
-                  </button>
-                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs">
-                    <Smile className="cursor-pointer" />
-                  </button>
-                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs">
-                    <Frown className="cursor-pointer" />
-                  </button>
+                  {icons.map((ic) => (
+                    <button
+                      key={ic.name}
+                      className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs  hover:scale-[1.3] transition-all duration-150"
+                    >
+                      <ic.icon className="cursor-pointer hover:-translate-y-1" />
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <MessageCircleDashed
-                size={28}
-                className="cursor-pointer text-gray-400 hover:text-blue-500"
-              />
-              <Share
-                size={28}
-                className="cursor-pointer text-gray-400 hover:text-blue-500"
-              />
+              <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
+                <MessageCircle
+                  size={28}
+                  className="cursor-pointer text-gray-400 hover:text-blue-500"
+                />
+                <span className="pt-2">Comments</span>
+              </div>
+
+              <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
+                {/* <Share
+                  size={28}
+                  className="cursor-pointer text-gray-400 hover:text-blue-500"
+                /> */}
+                <FontAwesomeIcon
+                  icon={faShareSquare}
+                  className="text-slate-200/80"
+                  style={{ fontSize: "22px" }}
+                />
+
+                <span className="pt-2">Share</span>
+              </div>
             </div>
           </div>
         </div>

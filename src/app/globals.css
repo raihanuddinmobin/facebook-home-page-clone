@@ -50,3 +50,16 @@ body {
   opacity: 1;
   visibility: visible;
 }
+
+.leftbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.leftbar::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+
+.leftbar::-webkit-scrollbar-thumb {
+  background: #77787a;
+  border-radius: 10px;
+}

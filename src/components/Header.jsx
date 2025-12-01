@@ -1,15 +1,11 @@
 "use client";
-import {
-  Bell,
-  Home,
-  LayoutDashboard,
-  Menu as MenuIcon,
-  MessageCircle,
-  ShoppingBag,
-  User,
-  Users,
-  Video,
-} from "lucide-react";
+import { faFacebookMessenger } from "@fortawesome/free-brands-svg-icons";
+import { faBell, faUser } from "@fortawesome/free-solid-svg-icons";
+
+import { faTableCells } from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Home, LayoutDashboard, ShoppingBag, Users, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -46,22 +42,22 @@ const quickMenu = [
   {
     title: "Menu",
     route: "/menu",
-    icon: MenuIcon,
+    icon: faTableCells,
   },
   {
     title: "Messages",
     route: "/messages",
-    icon: MessageCircle,
+    icon: faFacebookMessenger,
   },
   {
     title: "Notifications",
     route: "/notifications",
-    icon: Bell,
+    icon: faBell,
   },
   {
     title: "Profile",
     route: "/profile",
-    icon: User,
+    icon: faUser,
   },
 ];
 
@@ -156,13 +152,10 @@ export default function Header() {
                 <Link
                   href={m.route}
                   key={m.route}
-                  className="bg-light-gray p-3 rounded-full"
+                  className="bg-light-gray rounded-full  w-12 h-12 flex items-center justify-center"
                   title={m.title}
                 >
-                  <m.icon
-                    size={22}
-                    className={`${isActive ? "text-primary" : ""}`}
-                  />
+                  <FontAwesomeIcon icon={m.icon} style={{ fontSize: "22px" }} />
                 </Link>
               );
             })}

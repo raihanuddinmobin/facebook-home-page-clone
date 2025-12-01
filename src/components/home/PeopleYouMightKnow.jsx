@@ -41,10 +41,10 @@ export default function PeopleYouMightKnow() {
                   className="object-cover"
                 />
               </div>
-              <p className=" pt-3 text-center">{user.name}</p>
+              <p className=" pt-4 pl-2">{user.name}</p>
               {/* For simplicity im using that sorry thing */}
-              <p className="flex  pt-3 text-center text-sm items-center justify-center">
-                <div className="flex items-center justify-center">
+              <p className="flex  pt-1 text-sm pl-2">
+                <div className="flex items-center justify-center pr-1">
                   {/* Image is screech hear  */}
                   {user.story.map((s) => (
                     <Image
@@ -59,7 +59,7 @@ export default function PeopleYouMightKnow() {
                 </div>
                 {user.story.length} Mutual Friends
               </p>
-              <button className="text-primary bg-primary/25 mx-3 p-[0.3rem] cursor-pointer text-sm rounded-md flex items-center justify-center gap-2 pointer mt-4 ">
+              <button className="text-[#76beff] bg-[#263c59] mx-2 p-[0.3rem] cursor-pointer text-sm rounded-md flex items-center justify-center gap-2 pointer mt-4 py-[0.4rem] font-semibold">
                 <UserPlus size={18} /> Add Friend
               </button>
             </div>
