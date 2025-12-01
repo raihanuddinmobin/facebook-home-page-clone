@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import GroupItems from "./GroupItems";
 
 export default async function LeftGroup() {
   // IM keeping this as async components just to assuming that this data will be fetched on the server component!
@@ -54,25 +53,10 @@ export default async function LeftGroup() {
   ];
 
   return (
-    <div className="pb-4">
+    <div className="pb-6">
       <h3 className="text-lg pb-2">Your shortcuts</h3>
 
-      {itemGroups.map((item) => (
-        <Link
-          key={item.link}
-          href={`/groups/${item.link}`}
-          className="flex items-center gap-4 p-2 px-3 rounded-md hover:bg-light-gray w-full cursor-pointer"
-        >
-          <Image
-            height={40}
-            width={40}
-            src={item.image}
-            alt={item.name}
-            className="rounded-md object-cover"
-          />
-          <span className="text-sm">{item.name}</span>
-        </Link>
-      ))}
+      <GroupItems prefixLink={"/groups"} items={itemGroups} />
     </div>
   );
 }

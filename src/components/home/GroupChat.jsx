@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import { PlusIcon } from "lucide-react";
+import GroupItems from "./GroupItems";
 
 // I just copy pasted that cz of i showed before how to fetch data in server components
 const itemGroups = [
@@ -54,25 +54,15 @@ const itemGroups = [
 
 export default function GroupChat() {
   return (
-    <div className="pb-2">
-      <h3 className="text-lg pb-2">Group Chats</h3>
-
-      {itemGroups.map((item) => (
-        <Link
-          key={item.link}
-          href={`/groups/chat/${item.link}`}
-          className="flex items-center gap-4 p-2 px-3 rounded-md hover:bg-light-gray w-full cursor-pointer"
-        >
-          <Image
-            height={30}
-            width={30}
-            src={item.image}
-            alt={item.name}
-            className="rounded-md object-cover"
-          />
-          <span className="text-sm">{item.name}</span>
-        </Link>
-      ))}
+    <div className="pb-20">
+      <h3 className="text-md pb-2 font-medium">Group Chats</h3>
+      <GroupItems prefixLink={"/groups/chat/"} items={itemGroups} />
+      <button className="flex items-center gap-4 p-1 px-2 rounded-md hover:bg-light-gray w-full cursor-pointer mt-4">
+        <div className="bg-light-gray-50 p-2 rounded-full">
+          <PlusIcon />
+        </div>
+        <span className="font-medium">Create Group Chat</span>
+      </button>
     </div>
   );
 }

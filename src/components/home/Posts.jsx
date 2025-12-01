@@ -128,7 +128,7 @@ const posts = [
 
 export default function Posts() {
   return (
-    <div className="mx-auto mt-6 space-y-6">
+    <div className="mx-auto mt-2  space-y-6">
       {posts.map((post) => (
         <div
           key={post.id}
@@ -153,7 +153,7 @@ export default function Posts() {
           <div className="p-4 pt-0">
             <p className="text-slate-50">{post.caption}</p>
           </div>
-          <div className="relative w-full h-96">
+          <div className="relative w-full h-42 sm:h-56 lg:h-72 xl:h-96">
             <Image
               src={post.postImage}
               alt="Post"

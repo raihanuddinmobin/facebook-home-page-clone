@@ -3,30 +3,29 @@ import Image from "next/image";
 
 export default function NewUpload() {
   return (
-    <div className="p-3 bg-gray rounded-md flex items-center gap-3 ">
+    <div className="p-3 bg-gray rounded-md flex items-center gap-3">
       <Image
-        src={"/profile.png"}
-        className="rounded-full static"
-        objectFit="contain"
+        src="/profile.png"
+        className="rounded-full"
         alt="Profile Image"
-        height={40}
-        width={40}
+        height={34}
+        width={34}
       />
 
       <input
-        className="bg-light-gray-50 rounded-full px-7 pl-2 md:pl-8 h-full  py-3 flex-1"
-        type="string"
-        placeholder="Whats One your Mind, Raihan?"
+        className="bg-light-gray-50 rounded-full px-5 pl-2 md:pl-5 h-full py-2 flex-1 min-w-0"
+        type="text"
+        placeholder="Whats on your mind, Raihan?"
       />
 
-      <div className="flex items-center  gap-4">
+      <div className="flex items-center gap-4 shrink-0">
         <Video
-          size={34}
+          size={32}
           className="text-red-500 cursor-pointer hidden sm:block"
         />
-        <ImageIcon size={30} className="text-green-500 cursor-pointer " />
+        <ImageIcon size={26} className="text-green-500 cursor-pointer" />
         <ListVideo
-          size={30}
+          size={26}
           className="text-pink-600 cursor-pointer hidden sm:block"
         />
       </div>

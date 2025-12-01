@@ -208,12 +208,13 @@ export const messengerData = [
 
 export default function RightMenu() {
   return (
-    <div>
+    // Keeping opacity 50 cz im assuming that we are in active status of mode
+    <div className="opacity-50">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg pb-2 ">Contacts</h3>
-        <div className="flex gap-3">
-          <Search />
-          <Menu />
+        <h3 className="text-md pb-2 font-medium">Contacts</h3>
+        <div className="flex gap-6">
+          <Search size={20} />
+          <Menu size={20} />
         </div>
       </div>
 

@@ -132,7 +132,7 @@ export default function UsersStory() {
   const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
   return (
-    <div className="w-full px-4 py-4 relative">
+    <div className="w-full  py-4 relative">
       <button
         onClick={scrollNext}
         className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-2 bg-light-gray w-12 h-12 flex items-center justify-center  rounded-full shadow cursor-pointer"
@@ -143,7 +143,7 @@ export default function UsersStory() {
       <div className="embla " ref={emblaRef}>
         <div className="embla__container">
           <div
-            className="embla__slide flex flex-col items-center cursor-pointer story-card w-36 h-64 overflow-hidden rounded-md"
+            className="embla__slide flex flex-col items-center cursor-pointer story-card w-30 h-52  overflow-hidden rounded-md"
             style={{
               backgroundImage: `url('/profile.png')`,
               backgroundSize: "cover",
@@ -161,7 +161,7 @@ export default function UsersStory() {
           {storyUsers.map((user) => (
             <div
               key={user.id}
-              className="embla__slide flex flex-col p-3  cursor-pointer story-card h-64 border border-white/20 w-36 rounded-md"
+              className="embla__slide flex flex-col p-3  cursor-pointer story-card h-52 border border-white/20 w-30 rounded-md"
               style={{
                 backgroundImage: user.story?.[0]?.thumbnail
                   ? `url(${user.story[0].thumbnail})`
@@ -173,9 +173,9 @@ export default function UsersStory() {
               <Image
                 src={user.profileImage}
                 alt={user.name}
-                width={40}
-                height={40}
-                className="rounded-full object-cover border-2 border-primary "
+                width={36}
+                height={36}
+                className="rounded-full object-cover border-3 border-primary "
               />
               <p className="story-name mt-auto">{user.name}</p>
             </div>

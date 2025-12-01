@@ -5,6 +5,7 @@ import NewUpload from "@/components/home/NewUpload";
 import PeopleYouMightKnow from "@/components/home/PeopleYouMightKnow";
 import Posts from "@/components/home/Posts";
 import RightMenu from "@/components/home/RightMenu";
+import UsersBirthday from "@/components/home/UsersBirthday";
 import UsersStory from "@/components/home/UsersStory";
 
 export default function HomePage() {
@@ -37,6 +38,8 @@ export default function HomePage() {
               direction: "ltr",
             }}
           >
+            <UsersBirthday />
+            <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-light-gray" />
             <RightMenu />
             <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-light-gray" />
             <GroupChat />
