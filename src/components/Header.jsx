@@ -9,7 +9,7 @@ import { Home, LayoutDashboard, ShoppingBag, Users, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import MenuList from "./home/MenuList";
 import PlaceholderMenu from "./home/PlaceHolderMenu";
 
@@ -67,6 +67,26 @@ const quickMenu = [
 export default function Header() {
   const pathName = usePathname();
   const [activeMenu, setActiveMenu] = useState("");
+
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setActiveMenu("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const toggleMenu = (route) => {
+    setActiveMenu((prev) => (prev === route ? "" : route));
+  };
 
   return (
     <>
@@ -136,7 +156,7 @@ export default function Header() {
             })}
           </ul>
         </nav>
-        <nav className="relative">
+        <nav ref={menuRef} className="relative">
           <ul className="flex gap-4 items-center">
             {quickMenu.map((m) => {
               const isActive =
@@ -165,19 +185,11 @@ export default function Header() {
                       alt="Profile Image"
                       height={40}
                       width={40}
-                      onClick={() =>
-                        setActiveMenu((prev) =>
-                          prev === m.route ? "" : m.route
-                        )
-                      }
+                      onClick={() => toggleMenu(m.route)}
                     />
                   ) : (
                     <button
-                      onClick={() =>
-                        setActiveMenu((prev) =>
-                          prev === m.route ? "" : m.route
-                        )
-                      }
+                      onClick={() => toggleMenu(m.route)}
                       className="bg-light-gray cursor-pointer rounded-full w-12 h-12 flex items-center justify-center"
                       title={m.title}
                     >
