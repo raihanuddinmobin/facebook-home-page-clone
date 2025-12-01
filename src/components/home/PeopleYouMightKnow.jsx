@@ -31,7 +31,7 @@ export default function PeopleYouMightKnow() {
           {storyUsers.map((user) => (
             <div
               key={user.id}
-              className="embla__slide  overflow-hidden flex flex-col cursor-pointer story-card h-64 border border-white/20 w-52 rounded-md pb-3"
+              className="embla__slide  overflow-hidden flex flex-col cursor-pointer story-card h-72 border border-white/20 w-48 rounded-md pb-3"
             >
               <div className="relative w-full h-46">
                 <Image
@@ -59,8 +59,8 @@ export default function PeopleYouMightKnow() {
                 </div>
                 {user.story.length} Mutual Friends
               </p>
-              <button className="text-primary bg-primary/25 mx-3 p-[0.3rem] cursor-pointer text-sm rounded-md flex items-center justify-center gap-2 pointer mt-4">
-                <UserPlus /> Add Friend
+              <button className="text-primary bg-primary/25 mx-3 p-[0.3rem] cursor-pointer text-sm rounded-md flex items-center justify-center gap-2 pointer mt-4 ">
+                <UserPlus size={18} /> Add Friend
               </button>
             </div>
           ))}
