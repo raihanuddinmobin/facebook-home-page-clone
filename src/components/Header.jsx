@@ -69,102 +69,108 @@ export default function Header() {
   const pathName = usePathname();
 
   return (
-    <section className=" flex justify-between items-center  px-4 py-2 bg-gray border-gray-200/40 border-b sticky top-0">
-      <div className="flex gap-3">
-        <Link href={"/"}>
-          <Image
-            src={"/logo.png"}
-            alt="Facebook Logo"
-            height={40}
-            width={40}
-            objectFit="cover"
-          />
-        </Link>
+    <>
+      <section className=" flex justify-between items-center  px-4 py-2 bg-gray border-gray-200/40 border-b fixed w-full z-50">
+        <div className="flex gap-3">
+          <Link href={"/"}>
+            <Image
+              src={"/logo.png"}
+              alt="Facebook Logo"
+              height={40}
+              width={40}
+              objectFit="cover"
+            />
+          </Link>
 
-        <div className="relative">
-          <div className="absolute inset-y-0 start-0 flex items-center justify-center  pointer-events-none bg-light-gray md:bg-transparent rounded-full p-3">
-            <svg
-              className="w-4 h-4 text-body"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeWidth="2"
-                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
-              />
-            </svg>
+          <div className="relative">
+            <div className="absolute inset-y-0 start-0 flex items-center justify-center  pointer-events-none bg-light-gray md:bg-transparent rounded-full p-3">
+              <svg
+                className="w-4 h-4 text-body"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeWidth="2"
+                  d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            </div>
+            <input
+              className="bg-light-gray rounded-full px-7 pl-8 h-full hidden md:inline-block"
+              type="string"
+              placeholder="Search Facebook"
+            />
           </div>
-          <input
-            className="bg-light-gray rounded-full px-7 pl-8 h-full hidden md:inline-block"
-            type="string"
-            placeholder="Search Facebook"
-          />
         </div>
-      </div>
 
-      <nav className="hidden lg:block">
-        <ul className="flex">
-          {menus.map((m) => {
-            const isActive =
-              m.route === "/" ? pathName === "/" : pathName.startsWith(m.route);
+        <nav className="hidden lg:block">
+          <ul className="flex">
+            {menus.map((m) => {
+              const isActive =
+                m.route === "/"
+                  ? pathName === "/"
+                  : pathName.startsWith(m.route);
 
-            return (
-              <Link
-                href={m.route}
-                key={m.route}
-                title={m.title}
-                className={`hover:bg-light-gray py-3 px-8 xl:px-12 rounded-md relative`}
-              >
-                {isActive && (
-                  <span className="block absolute  border-b-3 border-primary w-full -bottom-2 left-0" />
-                )}
-                <m.icon
-                  size={30}
-                  className={`${isActive ? "text-primary" : ""}`}
+              return (
+                <Link
+                  href={m.route}
+                  key={m.route}
+                  title={m.title}
+                  className={`hover:bg-light-gray py-3 px-8 xl:px-12 rounded-md relative`}
+                >
+                  {isActive && (
+                    <span className="block absolute  border-b-3 border-primary w-full -bottom-2 left-0" />
+                  )}
+                  <m.icon
+                    size={30}
+                    className={`${isActive ? "text-primary" : ""}`}
+                  />
+                </Link>
+              );
+            })}
+          </ul>
+        </nav>
+
+        <nav>
+          <ul className="flex gap-4 items-center">
+            {quickMenu.map((m) => {
+              const isActive = pathName.startsWith(m.route);
+
+              return m.title === "Profile" ? (
+                <Image
+                  key={m.route}
+                  src={"/profile.png"}
+                  className="rounded-full static cursor-pointer"
+                  objectFit="contain"
+                  alt="Profile Image"
+                  height={40}
+                  width={40}
                 />
-              </Link>
-            );
-          })}
-        </ul>
-      </nav>
+              ) : (
+                <Link
+                  href={m.route}
+                  key={m.route}
+                  className="bg-light-gray p-3 rounded-full"
+                  title={m.title}
+                >
+                  <m.icon
+                    size={22}
+                    className={`${isActive ? "text-primary" : ""}`}
+                  />
+                </Link>
+              );
+            })}
+          </ul>
+        </nav>
+      </section>
 
-      <nav>
-        <ul className="flex gap-4 items-center">
-          {quickMenu.map((m) => {
-            const isActive = pathName.startsWith(m.route);
-
-            return m.title === "Profile" ? (
-              <Image
-                key={m.route}
-                src={"/profile.png"}
-                className="rounded-full static cursor-pointer"
-                objectFit="contain"
-                alt="Profile Image"
-                height={40}
-                width={40}
-              />
-            ) : (
-              <Link
-                href={m.route}
-                key={m.route}
-                className="bg-light-gray p-3 rounded-full"
-                title={m.title}
-              >
-                <m.icon
-                  size={22}
-                  className={`${isActive ? "text-primary" : ""}`}
-                />
-              </Link>
-            );
-          })}
-        </ul>
-      </nav>
-    </section>
+      <div className="h-18" />
+    </>
   );
 }

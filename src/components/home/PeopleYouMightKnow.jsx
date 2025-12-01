@@ -14,7 +14,7 @@ export default function PeopleYouMightKnow() {
   const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
   return (
-    <div className="w-full px-4 py-4 relative bg-light-gray-50 rounded-l-md">
+    <div className=" px-4 py-6 relative bg-light-gray-50 rounded-l-md mt-6">
       <h3 className="flex items-center gap-2 pb-4">
         <Users size={20} />
         <strong>People You Might Know</strong>
