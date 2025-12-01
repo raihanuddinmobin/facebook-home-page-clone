@@ -8,12 +8,32 @@ const posts = [
     id: "post_001",
     user: "Ariana Gomez",
     profileImage: "https://picsum.photos/seed/u1/50/50",
-    postImage: "https://picsum.photos/seed/p1/400/300",
-    caption: "Enjoying a sunny day at the park! 🌞",
+    images: [
+      "https://picsum.photos/seed/p1/800/600",
+      "https://picsum.photos/seed/p2/800/600",
+      "https://picsum.photos/seed/p3/800/600",
+    ],
+    caption: "Enjoying a sunny day at the park!",
     likes: 120,
     comments: [
-      { user: "John Doe", text: "Looks amazing!" },
-      { user: "Emily Smith", text: "Wish I was there!" },
+      {
+        user: "John Doe",
+        userImage: "https://picsum.photos/seed/c1/40/40",
+        text: "This looks so relaxing!",
+        time: "2h",
+      },
+      {
+        user: "Sarah Kim",
+        userImage: "https://picsum.photos/seed/c2/40/40",
+        text: "Love the vibes!",
+        time: "1h",
+      },
+      {
+        user: "Mike Chen",
+        userImage: "https://picsum.photos/seed/c3/40/40",
+        text: "Wish I was there right now",
+        time: "45m",
+      },
     ],
     createdAt: new Date("2025-12-01T08:15:00"),
   },
@@ -21,22 +41,54 @@ const posts = [
     id: "post_002",
     user: "Leo Martinez",
     profileImage: "https://picsum.photos/seed/u2/50/50",
-    postImage: "https://picsum.photos/seed/p2/400/300",
-    caption: "Just finished my morning run. Feeling great! 🏃‍♂️",
+    images: ["https://picsum.photos/seed/p4/800/600"],
+    caption: "Just finished my morning run. Feeling great!",
     likes: 89,
-    comments: [{ user: "Sarah Lee", text: "Go Leo! 💪" }],
+    comments: [
+      {
+        user: "Emma Wilson",
+        userImage: "https://picsum.photos/seed/c4/40/40",
+        text: "You're killing it Leo!",
+        time: "3h",
+      },
+      {
+        user: "David Park",
+        userImage: "https://picsum.photos/seed/c5/40/40",
+        text: "Keep pushing bro",
+        time: "2h",
+      },
+    ],
     createdAt: new Date("2025-12-01T07:45:00"),
   },
   {
     id: "post_003",
     user: "Maya Patel",
     profileImage: "https://picsum.photos/seed/u3/50/50",
-    postImage: "https://picsum.photos/seed/p3/400/300",
-    caption: "Homemade pizza night 🍕",
+    images: [
+      "https://picsum.photos/seed/p5/800/600",
+      "https://picsum.photos/seed/p6/800/600",
+    ],
+    caption: "Homemade pizza night",
     likes: 150,
     comments: [
-      { user: "David Kim", text: "Yum! Recipe?" },
-      { user: "Nina Zhao", text: "Looks delicious!" },
+      {
+        user: "Nina Zhao",
+        userImage: "https://picsum.photos/seed/c6/40/40",
+        text: "That looks better than delivery!",
+        time: "1h",
+      },
+      {
+        user: "Alex Rivera",
+        userImage: "https://picsum.photos/seed/c7/40/40",
+        text: "Recipe please!!",
+        time: "50m",
+      },
+      {
+        user: "Sofia Lopez",
+        userImage: "https://picsum.photos/seed/c8/40/40",
+        text: "I'm hungry now",
+        time: "30m",
+      },
     ],
     createdAt: new Date("2025-12-01T18:30:00"),
   },
@@ -44,22 +96,57 @@ const posts = [
     id: "post_004",
     user: "Chris Johnson",
     profileImage: "https://picsum.photos/seed/u4/50/50",
-    postImage: "https://picsum.photos/seed/p4/400/300",
-    caption: "Exploring the mountains this weekend 🏔️",
+    images: [
+      "https://picsum.photos/seed/p7/800/600",
+      "https://picsum.photos/seed/p8/800/600",
+      "https://picsum.photos/seed/p9/800/600",
+      "https://picsum.photos/seed/p10/800/600",
+      "https://picsum.photos/seed/p11/800/600",
+    ],
+    caption: "Exploring the mountains this weekend",
     likes: 210,
-    comments: [{ user: "Olivia Brown", text: "Amazing view!" }],
+    comments: [
+      {
+        user: "Olivia Brown",
+        userImage: "https://picsum.photos/seed/c9/40/40",
+        text: "Incredible views!",
+        time: "5h",
+      },
+      {
+        user: "James Lee",
+        userImage: "https://picsum.photos/seed/c10/40/40",
+        text: "Take me with you next time!",
+        time: "4h",
+      },
+    ],
     createdAt: new Date("2025-11-30T12:00:00"),
   },
   {
     id: "post_005",
     user: "Sophia Williams",
     profileImage: "https://picsum.photos/seed/u5/50/50",
-    postImage: "https://picsum.photos/seed/p5/400/300",
-    caption: "Coffee + Book = Perfect Sunday ☕📖",
+    images: ["https://picsum.photos/seed/p12/800/600"],
+    caption: "Coffee + Book = Perfect Sunday",
     likes: 98,
     comments: [
-      { user: "Liam Scott", text: "So cozy!" },
-      { user: "Emma Davis", text: "Which book?" },
+      {
+        user: "Liam Scott",
+        userImage: "https://picsum.photos/seed/c11/40/40",
+        text: "This is my kind of Sunday",
+        time: "2h",
+      },
+      {
+        user: "Isabella Moore",
+        userImage: "https://picsum.photos/seed/c12/40/40",
+        text: "Which book are you reading?",
+        time: "1h",
+      },
+      {
+        user: "Noah Clark",
+        userImage: "https://picsum.photos/seed/c13/40/40",
+        text: "So cozy",
+        time: "40m",
+      },
     ],
     createdAt: new Date("2025-12-01T09:20:00"),
   },
@@ -67,171 +154,184 @@ const posts = [
     id: "post_006",
     user: "Ryan Lee",
     profileImage: "https://picsum.photos/seed/u6/50/50",
-    postImage: "https://picsum.photos/seed/p6/400/300",
-    caption: "Throwback to my trip to Italy 🇮🇹",
+    images: [
+      "https://picsum.photos/seed/p13/800/600",
+      "https://picsum.photos/seed/p14/800/600",
+      "https://picsum.photos/seed/p15/800/600",
+      "https://picsum.photos/seed/p16/800/600",
+    ],
+    caption: "Throwback to my trip to Italy",
     likes: 320,
     comments: [
-      { user: "Mia Chen", text: "Italy is on my bucket list!" },
-      { user: "Noah Wilson", text: "Beautiful!" },
+      {
+        user: "Mia Chen",
+        userImage: "https://picsum.photos/seed/c14/40/40",
+        text: "Italy is pure magic",
+        time: "6h",
+      },
+      {
+        user: "Ethan Miller",
+        userImage: "https://picsum.photos/seed/c15/40/40",
+        text: "Dream destination",
+        time: "5h",
+      },
+      {
+        user: "Ava Thompson",
+        userImage: "https://picsum.photos/seed/c16/40/40",
+        text: "Those colors are unreal!",
+        time: "4h",
+      },
+      {
+        user: "Lucas Garcia",
+        userImage: "https://picsum.photos/seed/c17/40/40",
+        text: "When are we going back?",
+        time: "2h",
+      },
     ],
     createdAt: new Date("2025-11-29T15:45:00"),
-  },
-  {
-    id: "post_007",
-    user: "Ella Thompson",
-    profileImage: "https://picsum.photos/seed/u7/50/50",
-    postImage: "https://picsum.photos/seed/p7/400/300",
-    caption: "Homemade cupcakes for the weekend 🧁",
-    likes: 140,
-    comments: [{ user: "Jack Martinez", text: "Yummy!" }],
-    createdAt: new Date("2025-12-01T11:00:00"),
-  },
-  {
-    id: "post_008",
-    user: "Liam White",
-    profileImage: "https://picsum.photos/seed/u8/50/50",
-    postImage: "https://picsum.photos/seed/p8/400/300",
-    caption: "Sunset vibes 🌅",
-    likes: 205,
-    comments: [{ user: "Ava Clark", text: "So peaceful!" }],
-    createdAt: new Date("2025-12-01T17:30:00"),
-  },
-  {
-    id: "post_009",
-    user: "Chloe Adams",
-    profileImage: "https://picsum.photos/seed/u9/50/50",
-    postImage: "https://picsum.photos/seed/p9/400/300",
-    caption: "Beach day with friends 🏖️",
-    likes: 310,
-    comments: [
-      { user: "Ethan Miller", text: "Looks fun!" },
-      { user: "Sophia Johnson", text: "Miss the beach!" },
-    ],
-    createdAt: new Date("2025-11-30T14:15:00"),
-  },
-  {
-    id: "post_010",
-    user: "Mason Taylor",
-    profileImage: "https://picsum.photos/seed/u10/50/50",
-    postImage: "https://picsum.photos/seed/p10/400/300",
-    caption: "Late-night coding session 💻",
-    likes: 75,
-    comments: [{ user: "Isabella Moore", text: "Keep it up!" }],
-    createdAt: new Date("2025-12-01T23:00:00"),
   },
 ];
 
 const icons = [
-  {
-    name: "Like",
-    icon: ThumbsUp,
-  },
-  {
-    name: "Love",
-    icon: Heart,
-  },
-  {
-    name: "Haha",
-    icon: Smile,
-  },
-  {
-    name: "Sad",
-    icon: Frown,
-  },
+  { name: "Like", icon: ThumbsUp },
+  { name: "Love", icon: Heart },
+  { name: "Haha", icon: Smile },
+  { name: "Sad", icon: Frown },
 ];
 
 export default function Posts() {
+  const getGridLayout = (count) => {
+    if (count === 1) return "grid-cols-1";
+    if (count === 2) return "grid-cols-2";
+    if (count === 3) return "grid-cols-2";
+    return "grid-cols-2";
+  };
+
+  const getImageHeightClass = (count, index) => {
+    if (count === 1) return "h-96";
+    if (count === 3 && index === 0) return "row-span-2";
+    return "h-48";
+  };
+
   return (
-    <div className="mx-auto mt-2  space-y-6">
-      {posts.map((post) => (
-        <div
-          key={post.id}
-          className="bg-light-gray-25 rounded-lg shadow-md overflow-hidden border border-gray-50/10"
-        >
-          <div className="flex items-center p-4">
-            <Image
-              src={post.profileImage}
-              alt={post.user}
-              width={40}
-              height={40}
-              className="rounded-full mr-3"
-            />
-            <div className="flex flex-col">
-              <span className="font-semibold text-slate-100">{post.user}</span>
-              <span className="text-sm text-slate-300">
-                {post.createdAt.toLocaleString()}
-              </span>
+    <div className="mx-auto mt-2 space-y-6 ">
+      {posts.map((post) => {
+        const imageCount = post.images.length;
+        const showCounter = imageCount > 4;
+
+        return (
+          <div
+            key={post.id}
+            className="bg-light-gray-25 rounded-lg shadow-md overflow-hidden border border-gray-50/10"
+          >
+            <div className="flex items-center p-4">
+              <Image
+                src={post.profileImage}
+                alt={post.user}
+                width={40}
+                height={40}
+                className="rounded-full mr-3 object-cover"
+              />
+              <div>
+                <span className="font-semibold text-slate-100">
+                  {post.user}
+                </span>
+                <span className="block text-sm text-slate-300">
+                  {post.createdAt.toLocaleString()}
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="p-4 pt-0">
-            <p className="text-slate-50">{post.caption}</p>
-          </div>
-          <div className="relative w-full h-42 sm:h-56 lg:h-72 xl:h-96">
-            <Image
-              src={post.postImage}
-              alt="Post"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          <div className="p-4 space-y-2">
-            <div className="flex justify-between items-center">
-              <p className="text-gray-500 text-sm">{post.likes} likes</p>
-              <p className="text-gray-500 text-sm">
-                {post.comments.length} Comments
-              </p>
+            <div className="px-4 pb-2">
+              <p className="text-slate-50">{post.caption}</p>
             </div>
-            <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-slate-500" />
 
-            <div className="flex space-x-4 relative  justify-between">
-              <div className="group relative">
-                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
-                  <ThumbsUp
-                    size={28}
-                    className=" text-gray-400 hover:text-blue-500"
-                  />
-                  <span className="pt-2 hidden md:block">Likes</span>
-                </div>
-
-                <div className="absolute -top-14 left-18  -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray rounded-full p-2">
-                  {icons.map((ic) => (
-                    <button
-                      key={ic.name}
-                      className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs  hover:scale-[1.3] transition-all duration-150"
+            <div className="relative">
+              <div
+                className={`grid ${getGridLayout(imageCount)} gap-1 bg-black`}
+              >
+                {post.images
+                  .slice(0, imageCount === 3 ? 3 : 4)
+                  .map((img, idx) => (
+                    <div
+                      key={idx}
+                      className={`relative overflow-hidden cursor-pointer ${getImageHeightClass(
+                        imageCount,
+                        idx
+                      )} ${imageCount === 3 && idx === 0 ? "row-span-2" : ""}`}
                     >
-                      <ic.icon className="cursor-pointer hover:-translate-y-1" />
-                    </button>
+                      <Image
+                        src={img}
+                        alt={`Post image ${idx + 1}`}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-300"
+                      />
+
+                      {showCounter && idx === 3 && (
+                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                          <span className="text-4xl font-bold text-white">
+                            +{imageCount - 4}
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   ))}
+              </div>
+            </div>
+
+            <div className="p-4 space-y-2">
+              <div className="flex justify-between items-center">
+                <p className="text-gray-500 text-sm">{post.likes} likes</p>
+                <p className="text-gray-500 text-sm">
+                  {post.comments.length} Comments
+                </p>
+              </div>
+              <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-slate-500" />
+
+              <div className="flex space-x-4 relative  justify-between">
+                <div className="group relative">
+                  <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
+                    <ThumbsUp
+                      size={28}
+                      className=" text-gray-400 hover:text-blue-500"
+                    />
+                    <span className="pt-2 hidden md:block">Likes</span>
+                  </div>
+
+                  <div className="absolute -top-14 left-18  -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray rounded-full p-2">
+                    {icons.map((ic) => (
+                      <button
+                        key={ic.name}
+                        className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs  hover:scale-[1.3] transition-all duration-150"
+                      >
+                        <ic.icon className="cursor-pointer hover:-translate-y-1" />
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
-                <MessageCircle
-                  size={28}
-                  className="cursor-pointer text-gray-400 hover:text-blue-500"
-                />
-                <span className="pt-2 hidden md:block">Comments</span>
-              </div>
+                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
+                  <MessageCircle
+                    size={28}
+                    className="cursor-pointer text-gray-400 hover:text-blue-500"
+                  />
+                  <span className="pt-2 hidden md:block">Comments</span>
+                </div>
 
-              <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
-                {/* <Share
-                  size={28}
-                  className="cursor-pointer text-gray-400 hover:text-blue-500"
-                /> */}
-                <FontAwesomeIcon
-                  icon={faShareSquare}
-                  className="text-slate-200/80"
-                  style={{ fontSize: "22px" }}
-                />
+                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
+                  <FontAwesomeIcon
+                    icon={faShareSquare}
+                    className="text-slate-200/80"
+                    style={{ fontSize: "22px" }}
+                  />
 
-                <span className="pt-2 hidden md:block">Share</span>
+                  <span className="pt-2 hidden md:block">Share</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
