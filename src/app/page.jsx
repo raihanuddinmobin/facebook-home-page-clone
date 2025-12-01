@@ -17,7 +17,6 @@ export default function HomePage() {
           <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-light-gray" />
           <LeftGroup />
         </div>
-
         <div className="w-full lg:w-[70%] xl:w-[45%] 3xl:w-[36%] xl:mx-auto">
           <div className="p-4">
             <NewUpload />
@@ -29,15 +28,10 @@ export default function HomePage() {
 
         <div
           // https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/direction
-          className="w-64 lg:w-80 xl:w-96 h-full p-2 hidden lg:block cursor-default hover:cursor-pointer fixed right-0"
-          // Added overflow: overlay
-          style={{ direction: "rtl", overflowY: "overlay" }}
+          className="rightbar w-64 lg:w-80 xl:w-96 p-2 hidden lg:block cursor-default h-full hover:cursor-pointer fixed right-0 overflow-y-auto"
+          style={{ direction: "rtl" }}
         >
-          <div
-            style={{
-              direction: "ltr",
-            }}
-          >
+          <div style={{ direction: "ltr" }}>
             <UsersBirthday />
             <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-light-gray" />
             <RightMenu />

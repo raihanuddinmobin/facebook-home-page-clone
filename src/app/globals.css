@@ -30,3 +30,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.rightbar::-webkit-scrollbar {
+  width: 6px;
+  opacity: 0;
+}
+
+.rightbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rightbar::-webkit-scrollbar-thumb {
+  background: transparent;
+  visibility: hidden;
+}
+
+.rightbar:hover::-webkit-scrollbar,
+.rightbar:hover::-webkit-scrollbar-thumb {
+  opacity: 1;
+  visibility: visible;
+}
