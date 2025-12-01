@@ -1,4 +1,11 @@
-import { MessageCircleDashed, Share, ThumbsUp } from "lucide-react";
+import {
+  Frown,
+  Heart,
+  MessageCircleDashed,
+  Share,
+  Smile,
+  ThumbsUp,
+} from "lucide-react";
 import Image from "next/image";
 
 const posts = [
@@ -156,17 +163,45 @@ export default function Posts() {
           </div>
 
           <div className="p-4 space-y-2">
-            <div className=" flex justify-between items-center">
+            <div className="flex justify-between items-center">
               <p className="text-gray-500 text-sm">{post.likes} likes</p>
               <p className="text-gray-500 text-sm">
                 {post.comments.length} Comments
               </p>
-            </div>{" "}
+            </div>
             <hr className="my-4 h-0.5 border-t-0 bg-neutral-100 dark:bg-slate-500" />
-            <div className="flex justify-between">
-              <ThumbsUp size={28} className="cursor-pointer" />
-              <MessageCircleDashed size={28} className="cursor-pointer" />
-              <Share size={28} className="cursor-pointer" />
+
+            <div className="flex space-x-4 relative  justify-between">
+              <div className="group relative ">
+                <ThumbsUp
+                  size={28}
+                  className="cursor-pointer text-gray-400 hover:text-blue-500"
+                />
+
+                <div className="absolute -top-14 left-18  -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray rounded-full p-2">
+                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs ">
+                    <ThumbsUp className="cursor-pointer" />
+                  </button>
+                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs">
+                    <Heart className="cursor-pointer" />
+                  </button>
+                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs">
+                    <Smile className="cursor-pointer" />
+                  </button>
+                  <button className="w-8 h-8  rounded-full flex items-center justify-center text-white text-xs">
+                    <Frown className="cursor-pointer" />
+                  </button>
+                </div>
+              </div>
+
+              <MessageCircleDashed
+                size={28}
+                className="cursor-pointer text-gray-400 hover:text-blue-500"
+              />
+              <Share
+                size={28}
+                className="cursor-pointer text-gray-400 hover:text-blue-500"
+              />
             </div>
           </div>
         </div>
