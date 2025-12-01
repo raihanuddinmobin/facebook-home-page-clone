@@ -9,7 +9,9 @@ import { Home, LayoutDashboard, ShoppingBag, Users, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import MenuList from "./home/MenuList";
+import PlaceholderMenu from "./home/PlaceHolderMenu";
 
 const menus = [
   {
@@ -65,21 +67,6 @@ const quickMenu = [
 export default function Header() {
   const pathName = usePathname();
   const [activeMenu, setActiveMenu] = useState("");
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setActiveMenu("");
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <>
@@ -157,21 +144,16 @@ export default function Header() {
 
               const isProfile = m.title === "Profile";
 
-              let leftSec = 200; // this is the pixel value
-              switch (activeMenu) {
-                case "/profile":
-                  leftSec = 320;
-                  break;
-                case "/messages":
-                  leftSec = 180;
-                  break;
-                case "/notifications":
-                  leftSec = 250;
-                  break;
-                case "/menu":
-                  leftSec = 115;
-                  break;
-              }
+              const menuClasses = {
+                "/menu":
+                  "left-[-110px] sm:left-[-190px]  md:left-[-420px] lg:left-[-460px]",
+                "/profile":
+                  "left-[-300px] sm:left-[-380px]  md:left-[-580px] lg:left-[-590px]",
+                "/notifications":
+                  "left-[-250px] sm:left-[-310px]  md:left-[-520px] lg:left-[-530px]",
+                "/messages":
+                  "left-[-210px] sm:left-[-250px]  md:left-[-520px] lg:left-[-460px]",
+              };
 
               return (
                 <li key={m.route} className="relative">
@@ -183,7 +165,7 @@ export default function Header() {
                       alt="Profile Image"
                       height={40}
                       width={40}
-                      onClick={(eve) =>
+                      onClick={() =>
                         setActiveMenu((prev) =>
                           prev === m.route ? "" : m.route
                         )
@@ -196,7 +178,7 @@ export default function Header() {
                           prev === m.route ? "" : m.route
                         )
                       }
-                      className={`bg-light-gray cursor-pointer rounded-full w-12 h-12 flex items-center justify-center`}
+                      className="bg-light-gray cursor-pointer rounded-full w-12 h-12 flex items-center justify-center"
                       title={m.title}
                     >
                       <FontAwesomeIcon
@@ -209,13 +191,17 @@ export default function Header() {
 
                   {activeMenu === m.route && (
                     <div
-                      ref={menuRef}
-                      className={`absolute top-13  min-w-[350px] bg-light-gray rounded-md p-2 z-50 h-64 flex items-center justify-center shadow-2xl`}
-                      style={{
-                        left: `-${leftSec}px`,
-                      }}
+                      className={`absolute top-13 bg-light-gray rounded-md p-2 z-50 flex items-center justify-center shadow-2xl ${menuClasses[activeMenu]}`}
                     >
-                      {activeMenu}
+                      {activeMenu === "/menu" ? (
+                        <MenuList
+                          onClose={() => {
+                            setActiveMenu("");
+                          }}
+                        />
+                      ) : (
+                        <PlaceholderMenu activeMenu={activeMenu} />
+                      )}
                     </div>
                   )}
                 </li>

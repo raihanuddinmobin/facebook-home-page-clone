@@ -192,7 +192,7 @@ export default function Posts() {
                     size={28}
                     className=" text-gray-400 hover:text-blue-500"
                   />
-                  <span className="pt-2">Likes</span>
+                  <span className="pt-2 hidden md:block">Likes</span>
                 </div>
 
                 <div className="absolute -top-14 left-18  -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray rounded-full p-2">
@@ -212,7 +212,7 @@ export default function Posts() {
                   size={28}
                   className="cursor-pointer text-gray-400 hover:text-blue-500"
                 />
-                <span className="pt-2">Comments</span>
+                <span className="pt-2 hidden md:block">Comments</span>
               </div>
 
               <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100">
@@ -226,7 +226,7 @@ export default function Posts() {
                   style={{ fontSize: "22px" }}
                 />
 
-                <span className="pt-2">Share</span>
+                <span className="pt-2 hidden md:block">Share</span>
               </div>
             </div>
           </div>
