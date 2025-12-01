@@ -9,6 +9,7 @@ import { Home, LayoutDashboard, ShoppingBag, Users, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 const menus = [
   {
@@ -63,6 +64,22 @@ const quickMenu = [
 
 export default function Header() {
   const pathName = usePathname();
+  const [activeMenu, setActiveMenu] = useState("");
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setActiveMenu("");
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -132,31 +149,76 @@ export default function Header() {
             })}
           </ul>
         </nav>
-
-        <nav>
+        <nav className="relative">
           <ul className="flex gap-4 items-center">
             {quickMenu.map((m) => {
-              const isActive = pathName.startsWith(m.route);
+              const isActive =
+                pathName.startsWith(m.route) || activeMenu.startsWith(m.route);
 
-              return m.title === "Profile" ? (
-                <Image
-                  key={m.route}
-                  src={"/profile.png"}
-                  className="rounded-full static cursor-pointer"
-                  objectFit="contain"
-                  alt="Profile Image"
-                  height={40}
-                  width={40}
-                />
-              ) : (
-                <Link
-                  href={m.route}
-                  key={m.route}
-                  className="bg-light-gray rounded-full  w-12 h-12 flex items-center justify-center"
-                  title={m.title}
-                >
-                  <FontAwesomeIcon icon={m.icon} style={{ fontSize: "22px" }} />
-                </Link>
+              const isProfile = m.title === "Profile";
+
+              let leftSec = 200; // this is the pixel value
+              switch (activeMenu) {
+                case "/profile":
+                  leftSec = 320;
+                  break;
+                case "/messages":
+                  leftSec = 180;
+                  break;
+                case "/notifications":
+                  leftSec = 250;
+                  break;
+                case "/menu":
+                  leftSec = 115;
+                  break;
+              }
+
+              return (
+                <li key={m.route} className="relative">
+                  {isProfile ? (
+                    <Image
+                      src={"/profile.png"}
+                      className="rounded-full cursor-pointer"
+                      objectFit="contain"
+                      alt="Profile Image"
+                      height={40}
+                      width={40}
+                      onClick={(eve) =>
+                        setActiveMenu((prev) =>
+                          prev === m.route ? "" : m.route
+                        )
+                      }
+                    />
+                  ) : (
+                    <button
+                      onClick={() =>
+                        setActiveMenu((prev) =>
+                          prev === m.route ? "" : m.route
+                        )
+                      }
+                      className={`bg-light-gray cursor-pointer rounded-full w-12 h-12 flex items-center justify-center`}
+                      title={m.title}
+                    >
+                      <FontAwesomeIcon
+                        icon={m.icon}
+                        style={{ fontSize: "22px" }}
+                        className={`${isActive ? "text-primary" : ""}`}
+                      />
+                    </button>
+                  )}
+
+                  {activeMenu === m.route && (
+                    <div
+                      ref={menuRef}
+                      className={`absolute top-13  min-w-[350px] bg-light-gray rounded-md p-2 z-50 h-64 flex items-center justify-center shadow-2xl`}
+                      style={{
+                        left: `-${leftSec}px`,
+                      }}
+                    >
+                      {activeMenu}
+                    </div>
+                  )}
+                </li>
               );
             })}
           </ul>
