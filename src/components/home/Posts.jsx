@@ -406,10 +406,10 @@ export default function Posts() {
               </div>
               <hr className="my-4 h-[0.2px] border-t-0 bg-neutral-100 dark:bg-white/20" />
 
-              <div className="flex space-x-4 relative items-center  justify-between p-4 pt-0">
+              <div className="flex space-x-4 relative items-center  justify-between pb-3 px-3  pt-0">
                 <div className="group relative flex flex-1 justify-center">
                   <div
-                    className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 rounded-md transition-all duration-100 h-8 "
+                    className="cursor-pointer w-full justify-center  flex items-center gap-2 hover:bg-gray px-6 rounded-md transition-all duration-100 py-1"
                     onClick={() => setLiked("")}
                   >
                     {liked && liked.postId === post.id ? (
@@ -449,7 +449,7 @@ export default function Posts() {
                   </div>
                 </div>
 
-                <div className="cursor-pointer flex items-center-safe gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100 flex-1 justify-center">
+                <div className="cursor-pointer flex items-center-safe gap-2 hover:bg-gray px-6  rounded-md transition-all duration-100 flex-1 justify-center py-1">
                   <MessageCircle
                     size={24}
                     className="cursor-pointer  text-slate-200  hover:text-blue-500"
@@ -459,7 +459,7 @@ export default function Posts() {
                   </span>
                 </div>
 
-                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6 py-1 rounded-md transition-all duration-100 flex-1 justify-center">
+                <div className="cursor-pointer flex items-center gap-2 hover:bg-gray px-6  rounded-md transition-all duration-100 flex-1 justify-center py-1">
                   <Share2
                     size={24}
                     className="cursor-pointer text-slate-200 hover:text-blue-500"
